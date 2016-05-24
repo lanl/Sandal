@@ -1,0 +1,180 @@
+c RANDOM-WALK INPUT FILE
+c (DO NOT REMOVE COMMENT LINES!)
+c (EVERY VARIABLE SHOULD HAVE A VALUE, EVEN IF IT WON'T BE USED)
+!
+! CONFIGURATION PARAMETER
+! ---------------------------------
+0     ! Debug level  (0 = CRITICAL_ERROR, 1 = WARNING_MSG, 2 = INFORMATIONAL, 3 = DEBUG)
+1     ! print on standard output: 1 = yes, 0 = no
+0     ! is_ER: 1 = case is event reconstruction, 0 = classic forward RW simulation
+!
+! RANDOM-WALK SIMULATION PARAMETERS
+! ---------------------------------
+30.0			! dt = base time-step (s)
+1800			! sim_time = total simulation time (s)
+1e5		! nparticles = number of particles/fluid elements to release over simulation duration
+100  			! iseed = initialization parameter for the random number generator; change to get a different sequence of numbers
+2				! flag_write_prtcl = 1 write out the particle location data, = 2 do not write out data
+1800			! prtcl_write_interval = the time interval for writing out particles (s) (if flag_prtcl_write = 1)
+20141020-0600
+!
+! CONCENTRATION GRID SAMPLING PARAMETERS
+! --------------------------------------
+1800			! avg_time_Cgrd = the time over which to compute concentration averages (s)
+2				! flag_write_conc3D = 1 write out the 3D concentration data file, = 2 do not write out data file
+2				! flag_write_dose3D = 1 write out the 3D dosage data file, = 2 do not write out data file
+2				! flag_format_xyplane = 1 write out C, D, ct files in matlab format, = 2 write out in ESRI grid format
+1				! flag_conc_units = 1 write out in g/m3, = 2 write out in CFU/m3  < also used for deposition output units
+3				! flag_dose_units = 1 write out in g*s/m3, = 2 write out in CFU*s/m3, = 3 write out in CFU*min/m3
+2    			! flag_write_ct =1 do not compute ct values, = 2 write out ct values 
+40.0 			! ct_ref_level
+1000			! ct_ref_dose corresponding to reference level (see flag_ct_ref_units for units)
+3				! flag_ct_ref_dose_units = 1 dosage in g*s/m3, = 2 in CFU*s/m3, = 3 in CFU*min/m3  
+1				! flag_Cgrid_size = 1 is user specified (see below), = 2 has same parameters as 2D wind grid
+200000.		! Lx_Cgrid = the size of the conc. domain in the east-west direction (m) < note: will be overwritten if flag_Cgrid_size=2
+200000.		! Ly_Cgrid = the size of the conc. domain in the north-south direction (m) < note: will be overwritten if flag_Cgrid_size=2
+1000.			! Lz_Cgrid = the size of the conc. domain in the vertical direction (m)
+0.0			! z_lower_Cgrid = the height of the concentration grid surface (m) < note: will be overwritten if flag_Cgrid_size=2
+100.0			! dx_Cgrid = the conc. grid cell size in the east-west direction (m) < note: will be overwritten if flag_Cgrid_size=2
+100.0			! dy_Cgrid = the conc. grid cell size in the north-south direction (m) < note: will be overwritten if flag_Cgrid_size=2
+20.0			! dz_Cgrid = the conc. grid cell size in the vertical direction (m) 
+1				! flag_Cgrid_coord =1 use UTM coordinates, =2 use lat-long for SW corner of grid
+50000			! x_west_Cgrid = the coordinate of the western side of the concentration grid in (m) or (dd) < note: will be overwritten if flag_Cgrid_size=2
+1950000		! y_south_Cgrid = the coordinate of the southern side of the concentration grid in (m) or (dd) < note: will be overwritten if flag_Cgrid_size=2
+!
+! RECEPTOR/COLLECTOR PARAMETERS
+! -----------------------------
+1				! flag_receptor = 1 compute concentrations at receptor locations, = 2 no receptors/collectors
+1800.			! avg_time_rcptr = the time over which to compute concentration averages (s)
+100.			! rcptr_cell_size = the length & width dimension of square cell around receptor/collector to compute concentrations (m)
+10.			! rcptr_cell_depth = height of cell around receptor/collector to compute concentrations (m)
+18				! nreceptors = number of receptors/collectors
+1				! flag_receptor_coord = 1 utm coordinates (m), = 2 lat/long coordinates (decimal degrees)
+1
+1.1781e+05   
+2.0895e+06
+2
+1.3596e+05   
+2.0071e+06
+3
+1.0567e+05  
+2.0242e+06
+4
+1.5219e+05   
+2.0054e+06
+5
+1.3359e+05   
+2.0442e+06
+6
+1.40e+05   
+2.070e+06
+7
+1.40e+05   
+2.0897e+06
+8
+1.9052e+05   
+2.0197e+06
+9
+1.35e+05   
+2.051e+06
+10
+1.4685e+05   
+2.0307e+06
+11
+1.9121e+05   
+2.0456e+06
+12
+1.45e+05   
+2.056e+06
+13
+1.7456e+05   
+2.0995e+06
+14
+1.7363e+05   
+2.0332e+06
+15
+1.70e+05   
+2.06e+06
+16
+1.5e5
+2.050e+06
+17
+1.5972e+05   
+2.0298e+06
+18
+1.60e+05   
+2.070e+06
+!	
+! MEAN WIND PARAMETERS
+! --------------------
+2					! flag_wind_input: 1 = SINGLE WIND, 2 = 2D GRID
+2					! flag_wind_profile: 1 = CONSTANT WIND, 2 = POWER-LAW PROFILE 
+1.0				! WSref = the wind speed for the flag_wind_input=1 single wind case (m/s)
+45.				! WDref = the wind direction for the flag_wind_input=1 single wind case (deg)
+10.				! Zref = height of single wind or 2D grid wind data (m, agl) 
+0.25				! Plaw = power-law profile exponent for the power-law wind profile (flag_wind_profile=2)
+!
+! TURBULENCE PARAMETERS
+! ---------------------	
+2						! flag_turb: 1 = constant values (specified below), 2 = use M-0 similarity and PGT classes
+1						! flag_drift: 0 = random-walk drift terms off, 1 = drift terms on
+1						! use calm wind 1= yes, 0 = no 
+!
+!     CONSTANT VALUES (turb_flag = 1)
+!
+60.0					! TLw = the Lagrangian time scale in the vertical (s)     		                                            
+0.40					! sigw = the standard deviation of vertical velocity fluctuations (m/s)
+0.60					! sigv = the standard deviation of lateral velocity fluctuations (m/s)
+0.70					! sigu = the standard deviation of longitudinal velocity fluctuations (m/s)
+!
+!     M-O SIMILARITY & PGT CLASSES (turb_flag = 2)
+!
+1					! number of wind files (only for flag_wind_input = 2)
+20141020-0600_wind2d.out   ! wind file name (format YYYYMMDD-HHMM_wind2d.out)
+1					! flag_MO_length: 1 = derived from stability class; 2 = user specifies M-O length 
+1					! stability_class: 1 = very unstable (A); 2 = unstable (B), 3 = moderately unstable (C), 4 = neutral (D), 5 = slightly stable (E), 6 = stable (F), 7 = extremely stable (G). Non-integer classes allowed
+9999.				! MO_length = user-specified Monin-Obukhov length (m); >0 stable, <0 unstable, abs value > 1000 neutral 
+1					! flag_roughness: 1 = derived from landuse type; 2 = user specifies roughness length 
+5					! roughness_class: 1 = water; 2 = near barren, 3 = grassland, 4 = brush/scrub, 5 = low forest/urban, 6 = towns/cities, 7 = tall forest/city centers                                               
+0.1				! z0 = user-specified roughness length (m)
+1500.				! BL_depth = the boundary-layer height (m)
+!
+! SOURCE PARAMETERS
+! -----------------
+50000.0		! mass = total release mass (g)
+1.0e12		! cfu_per_gram = colony forming units or spores per gram conversion factor < used if flag_conc_units, dose_units or ct_ref_dose_units  = 2 or 3
+1			! flag_release_duration: 1 = instantaneous release, 2 = finite duration, 3 = continuous
+30.0		! release_duration = how long release is emitted for (s)  < note: only needed for finite duration release 
+1			! flag_source_geometry: 1 = point source, 2 = line source, 3 = rectangular area source, 4 = circular area source
+1			! flag_source_coord: = 1 utm coordinates (m), = 2 lat/long coordinates (decimal degrees)
+1			! flag_deposition: 1 = no deposition, 2 = deposition
+0.5			! dep_velocity in cm/sec (used only with flag_deposition = 2)
+1			! flag_decay: 1 = no decay, 2 = decay
+1.0			! decay_rate in percent per minute
+! 
+!     POINT SOURCE (flag_source_geometry = 1)
+!
+1.4e5		! xs = east-west source location: utmx(m) or long(dd) 
+2.05e6	! ys = north-south source location: utmy(m) or lat (dd)
+2					! zs = source location above ground (m)
+! 
+!     LINE SOURCE (flag_source_geometry = 2)
+!
+ 0						! nsegments = number of segments 
+ ! 
+!     RECTANGULAR AREA SOURCE (flag_source_geometry = 3)
+!
+ 1						! nrectangles = number of non-overlapping rectangles (currently hard-wired to one!)
+ -78.17127				! xSW_rect = x (west) coordinate of south-west corner of rectangle: utmx(m) or long(dd)
+ 38.55323   			! ySW_rect = y (south) coordinate of south-west corner of rectangle: utmy(m) or lat(dd)
+ 0.012882				! rect_EWlength = length of rectangle in the East-West (x) direction: (m) or (dd)
+ 0.03572				! rect_NSlength = length of rectangle in the North-South (y) direction (m) or (dd)
+ 0.25					! zht_rectangle = height above ground level of rectangular area source (m)
+! 
+!     CIRCULAR AREA SOURCE (flag_source_geometry = 4)
+!
+ 1						! ncircles = number of non-overlapping circles (currently hard-wired to one!)
+ -78.17127				! xcenter = the x (west) coordinate of the center of the circle: utmx(m) or long(dd)
+ 38.55323  				! ycenter = the y (south) coordinate of the center of the circle: utmy(m) or lat(dd)
+ 2000					! circle_radius = the radius of the circular source (m)
+ 0.25					! zht_circle = height above ground level of circular area source (m)
