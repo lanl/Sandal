@@ -1,4 +1,4 @@
-### Sandal -- Simple rANDom wALk Simulation
+### Sandal -- Simple rANDom wALk simulation
 
 **LA-CC-16-048**
 
